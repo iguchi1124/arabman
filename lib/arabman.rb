@@ -11,7 +11,7 @@ module Arabman
       begin
         raise RangeError.new("Please enter a number between 1 and 3999.") unless (1..3999).include?(self)
         roman = ''
-        get_digit(4).times { roman << 'M' }
+        roman << 'M' * get_digit(4)
         roman << Converter.execute(get_digit(3), 'C', 'D', 'M')
         roman << Converter.execute(get_digit(2), 'X', 'L', 'C')
         roman << Converter.execute(get_digit(1), 'I', 'V', 'X')
@@ -31,20 +31,17 @@ module Arabman
 
   module Converter
 
-    # convert_digit_num(8, 'I', 'V', 'X') => 'VIII'
+    # Converter.execute(8, 'I', 'V', 'X') => 'VIII'
     def self.execute(num, one, five, ten)
       roman = ''
       if num <= 3
         roman << one * num
       elsif num <= 5
-        roman << one * (5 - num)
-        roman << five
+        roman << one * (5 - num) << five
       elsif num <= 8
-        roman << five
-        roman << one * (num - 5)
+        roman << five << one * (num - 5)
       else
-        roman << one * (10 - num)
-        roman << ten
+        roman << one * (10 - num) << ten
       end
       roman
     end
