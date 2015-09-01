@@ -9,13 +9,15 @@ module Arabman
 
     def to_roman
       begin
-        raise RangeError.new("Please enter a number between 1 and 3999.") unless (1..3999).include?(self)
-        roman = ''
-        roman << 'M' * get_digit(4)
-        roman << Converter.execute(get_digit(3), 'C', 'D', 'M')
-        roman << Converter.execute(get_digit(2), 'X', 'L', 'C')
-        roman << Converter.execute(get_digit(1), 'I', 'V', 'X')
-        roman
+        unless (1..3999).include?(self)
+          raise RangeError.new("Please enter a number between 1 and 3999.")
+        end
+
+        'M' * get_digit(4) <<
+        Translator.execute(get_digit(3), 'C', 'D', 'M') <<
+        Translator.execute(get_digit(2), 'X', 'L', 'C') <<
+        Translator.execute(get_digit(1), 'I', 'V', 'X')
+
       rescue => errors
         errors
       end
@@ -29,21 +31,19 @@ module Arabman
     end
   end
 
-  module Converter
+  module Translator
 
     # Converter.execute(8, 'I', 'V', 'X') => 'VIII'
     def self.execute(num, one, five, ten)
-      roman = ''
       if num <= 3
-        roman << one * num
+        one * num
       elsif num <= 5
-        roman << one * (5 - num) << five
+        one * (5 - num) << five
       elsif num <= 8
-        roman << five << one * (num - 5)
+        five << one * (num - 5)
       else
-        roman << one * (10 - num) << ten
+        one * (10 - num) << ten
       end
-      roman
     end
   end
 end
