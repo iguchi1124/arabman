@@ -33,7 +33,7 @@ module Arabman
 
   module Translator
 
-    # Converter.execute(8, 'I', 'V', 'X') => 'VIII'
+    # Translator.execute(8, 'I', 'V', 'X') => 'VIII'
     def self.execute(num, one, five, ten)
       if num <= 3
         one * num
