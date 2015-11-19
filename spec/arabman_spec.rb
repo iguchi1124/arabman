@@ -11,8 +11,7 @@ describe Arabman do
   end
 
   it 'return errors' do
-    # TODO: Add test
-    # expect { 0.to_roman }.to raise_error(RangeError, "Please enter a number between 1 and 3999.")
-    # expect { 4000.to_roman }.to raise_error(RangeError, "Please enter a number between 1 and 3999.")
+    expect { 0.to_roman }.to raise_error RangeError
+    expect { 4000.to_roman }.to raise_error RangeError
   end
 end
