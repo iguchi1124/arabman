@@ -1,5 +1,7 @@
 # Arabman
 
+[![Build Status](https://travis-ci.org/iguchi1124/arabman.svg)](https://travis-ci.org/iguchi1124/arabman)
+
 Translate to arabic numerals to roman numerals.
 
 ## Installation
