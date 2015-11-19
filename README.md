@@ -1,6 +1,6 @@
 # Arabman
 
-Convert into arabic numerals to roman numerals.
+Translate to arabic numerals to roman numerals.
 
 ## Installation
 
